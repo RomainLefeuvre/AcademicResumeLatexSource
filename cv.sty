@@ -1,18 +1,17 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{cv}
-
 % Adapat line space 
-\RequirePackage{setspace}			
-
+\RequirePackage{setspace}
+\RequirePackage{parskip}
 % Imported for the \isempty command	
-\RequirePackage{xstring, xifthen} 
+\RequirePackage{xstring, xifthen}
 
 % Page definition with geometry
-\RequirePackage{geometry}						
-\geometry{top=1.4cm, bottom=1.4cm, left=1cm, right=1cm}	
+\RequirePackage{geometry}
+\geometry{top=1.4cm, bottom=1.4cm, left=1cm, right=1cm}
 
 % Fontawseome inport for icons
-\RequirePackage{fontawesome5, moresize}		
+\RequirePackage{fontawesome5, moresize}
 \RequirePackage{enumitem}
 \setlist{topsep=0pt, leftmargin=6mm, noitemsep}
 \RequirePackage{fontenc, fontspec}
@@ -27,19 +26,19 @@
 
 %   Biblio
 \RequirePackage[backend=biber,doi=false,isbn=false,maxcitenames=10,maxbibnames=10,style=alphabetic]{biblatex}
-\addbibresource{cv.bib}  
+\addbibresource{cv.bib}
 
 % Change the icon of itemize
 \renewcommand{\labelitemi}{\textcolor{darkBlue}{$\triangleright$}}
 
 % Configure the pdf output
 \RequirePackage[pdfusetitle,
-	hidelinks,		
+	hidelinks,
 	linkcolor		= black,		% Simple internal links
 	colorlinks		= true,			% Set text color
 	anchorcolor		= black,		% Anchor text
 	urlcolor		= black			% Reference to internet links 
-]{hyperref}		
+]{hyperref}
 
 % Header command
 \newcommand*{\setname}[2]{\def\@firstname{#1}\def\@lastname{#2}}
@@ -67,27 +66,32 @@
 % Header with contact and title
 \newcommand{\cvtitle}{
 	\begin{center}
-		{\fontsize{27}{0}\
-			\texttt{\textcolor{darkBlue}{\@firstname}  \textcolor{darkBlue}{\@lastname} }
-			}
-\\\vspace{3mm}
-   {\fontsize{12}{0} \@status \cvContactSpace \@program} 
-\\\vspace{2mm}
+		{\fontsize{27}{0}\ \texttt{\textcolor{darkBlue}{\@firstname}  \textcolor{darkBlue}{\@lastname} }}
+
+		{\fontsize{12}{0} \@status \cvContactSpace \@program}
+
 		{\fontsize{12}{0}
 			\faIcon{envelope} \href{mailto:\@mail}{\@mail}
 			\cvContactSpace \faIcon{phone} \@mobile
 			\cvContactSpace \faIcon{github} \href{\@github}{GitHub}
-			\cvContactSpace \faIcon{linkedin} \href{\@linkedin}{LinkedIn}
+			\cvContactSpace \faIcon{linkedin} \href{\@linkedin}{LinkedIn}}
+
 	\end{center}
- \vspace{5mm}
-}
+
 }
 % Section command, first letter in capitaln, with a line until the end of the page
 %   [1] the section title 
-\newcommand{\cvSection}[1]{{\textcolor{darkBlue}{\texttt{\Huge{\firstLetter#1@}\LARGE{\allLetterExceptFirst#1@}} \hrulefill}}\\~\\}
+\newcommand{\cvSection}[1]{
+	\bigskip
+	{\textcolor{darkBlue}{\texttt{\Huge{\firstLetter#1@}\LARGE{\allLetterExceptFirst#1@}} \hrulefill}}
+
+}
 
 % Classical block defined in a minipage (it allows to manage the width of the text)
-\newcommand{\cvContentBlock}[1]{\tab {\large \begin{minipage}{18cm}#1\end{minipage}}\\~\\}
+\newcommand{\cvContentBlock}[1]{
+	\tab {\large \begin{minipage}{18cm}#1\end{minipage}}
+
+}
 
 % SUBSECTION COMMAND
 %   [1] Title displayed in the first line, left
@@ -96,11 +100,18 @@
 %   [4] Cities, Country, second line right
 %   [5] Optional, content of the subsection
 \newcommand{\cvContentTime}[5]{
-    % Blue title with the corresponding date at the end of the line
-	\tab \textcolor{blue}{\texttt{\Large \textbf{#1}} \hfill \textbf{\large #2}}\\
-    % Italic line to mention entities and their address 
-	\tab \textit{#3} \hfill #4\\
-    \ifthenelse{\isempty{#5}}{\\}{\tab \begin{minipage}{15cm}#5 \end{minipage}\\~\\}\\
+	\medskip
+	% Blue title with the corresponding date at the end of the line
+	\tab \textcolor{blue}{\texttt{\Large \textbf{#1}} \hfill \textbf{\large #2}} \linebreak
+	% Italic line to mention entities and their address 
+	\tab \textit{#3} \hfill #4
+
+	\ifthenelse{\isempty{#5}}{
+
+	}{
+		\tab \begin{minipage}{15cm}#5 \end{minipage}
+	}
+
 }
 
 
