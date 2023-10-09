@@ -37,7 +37,7 @@
 <h3 align="center">Romain Lefeuvre Academic Resume</h3>
 
   <p align="center">
-    The source code of my academic resume in latex
+    The source code of my academic resume in latex <a href=https://github.com/RomainLefeuvre/Latex-Academic-Resume/releases/latest> have a look</a>
     <br>
     <br>
     <a href="https://github.com/RomainLefeuvre/Latex-Academic-Resume/issues">Report Bug</a>
