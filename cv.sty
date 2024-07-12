@@ -44,6 +44,7 @@
 \newcommand*{\setname}[2]{\def\@firstname{#1}\def\@lastname{#2}}
 \newcommand*{\setstatus}[1]{\def\@status{#1}}
 \newcommand*{\setmobile}[1]{\def\@mobile{#1}}
+\newcommand*{\setsite}[1]{\def\@site{#1}}
 \newcommand*{\setposition}[1]{\def\@position{#1}}
 \newcommand*{\setmail}[1]{\def\@mail{#1}}
 \newcommand*{\setlinkedin}[1]{\def\@linkedin{#1}}
@@ -73,6 +74,8 @@
 		{\fontsize{12}{0}
 			\faIcon{envelope} \href{mailto:\@mail}{\@mail}
 			\cvContactSpace \faIcon{phone} \@mobile
+			\cvContactSpace \faIcon{globe} \href{https://\@site}{\@site}
+
 			\cvContactSpace \faIcon{github} \href{\@github}{GitHub}
 			\cvContactSpace \faIcon{linkedin} \href{\@linkedin}{LinkedIn}}
 
