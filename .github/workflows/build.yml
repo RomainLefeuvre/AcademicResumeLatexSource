@@ -16,7 +16,7 @@ jobs:
           latexmk_use_xelatex: true
           continue_on_error: true
       - name: Upload the pdf
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: PDF
           path: main.pdf
