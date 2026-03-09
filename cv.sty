@@ -25,7 +25,7 @@
 \definecolor{darkBlue}{RGB}{0,26,95}
 
 %   Biblio
-\RequirePackage[backend=biber,doi=false,isbn=false,maxcitenames=10,maxbibnames=10,style=alphabetic]{biblatex}
+\RequirePackage[backend=biber,doi=false,isbn=false,maxcitenames=10,maxbibnames=10,style=alphabetic,sorting=ydnt]{biblatex}
 \addbibresource{cv.bib}
 
 % Change the icon of itemize
@@ -87,7 +87,13 @@
 \newcommand{\cvSection}[1]{
 	\bigskip
 	{\textcolor{darkBlue}{\texttt{\Huge{\firstLetter#1@}\LARGE{\allLetterExceptFirst#1@}} \hrulefill}}
+}
 
+% Sub-section command, smaller than section, with horizontal rule
+%   [1] the sub-section title
+\newcommand{\cvSubSection}[1]{
+	\medskip
+	{\textcolor{blue}{\texttt{\Large\textbf{\firstLetter#1@}\large\textbf{\allLetterExceptFirst#1@}}}}
 }
 
 % Classical block defined in a minipage (it allows to manage the width of the text)
@@ -105,14 +111,15 @@
 \newcommand{\cvContentTime}[5]{
 	\medskip
 	% Blue title with the corresponding date at the end of the line
-	\tab \textcolor{blue}{\texttt{\Large \textbf{#1}} \hfill \textbf{\large #2}} \linebreak
+	\tab \parbox[t]{16cm}{\textcolor{blue}{\texttt{\Large \textbf{#1}}}}%
+	\hfill \smallskip \textbf{#2} \linebreak
 	% Italic line to mention entities and their address 
 	\tab \textit{#3} \hfill #4
 
 	\ifthenelse{\isempty{#5}}{
 
 	}{
-		\tab \begin{minipage}{15cm}#5 \end{minipage}
+		\tab \begin{minipage}{16cm}#5 \end{minipage}
 	}
 
 }
