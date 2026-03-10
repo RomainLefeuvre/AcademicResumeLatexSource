@@ -40,6 +40,9 @@
 	urlcolor		= black			% Reference to internet links 
 ]{hyperref}
 
+% Make URLs bold
+\renewcommand{\url}[1]{\textbf{\href{#1}{#1}}}
+
 % Header command
 \newcommand*{\setname}[2]{\def\@firstname{#1}\def\@lastname{#2}}
 \newcommand*{\setstatus}[1]{\def\@status{#1}}
