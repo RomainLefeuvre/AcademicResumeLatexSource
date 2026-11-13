@@ -65,7 +65,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project contains the source code of my academic curriculum.
+This project contains the source code of my academic curriculum, in two versions:
+
+* `main.tex` → `main.pdf` : the full resume
+* `main_short.tex` → `main_short.pdf` : a short 2-page version (sections in `cv/short/`)
+
+Both PDFs are built by the GitHub Action and attached to each release.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -77,7 +82,12 @@ This project contains the source code of my academic curriculum.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-* Use xelatex to build the resume
+* Use xelatex to build the resume, e.g. with latexmk :
+
+```sh
+latexmk -xelatex main.tex        # full version
+latexmk -xelatex main_short.tex  # short 2-page version
+```
 
 
 

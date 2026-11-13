@@ -76,7 +76,7 @@
 
 		{\fontsize{12}{0}
 			\faIcon{envelope} \href{mailto:\@mail}{\@mail}
-			\cvContactSpace \faIcon{phone} \@mobile
+			\@ifundefined{@mobile}{}{\cvContactSpace \faIcon{phone} \@mobile}
 			\cvContactSpace \faIcon{globe} \href{https://\@site}{\@site}
 
 			\cvContactSpace \faIcon{github} \href{\@github}{GitHub}
@@ -124,6 +124,30 @@
 	}{
 		\tab \begin{minipage}{16cm}#5 \end{minipage}
 	}
+
+}
+
+%-------------------------------------------------------------------------------
+%   Commands used by the short (2-page) version
+%-------------------------------------------------------------------------------
+% Compact publication entry: title + year, then the reference without its title
+%   [1] Title displayed in the first line, left
+%   [2] Year displayed in the first line, right
+%   [3] Bibtex key
+\newcommand{\cvPub}[3]{
+	\medskip
+	\tab \parbox[t]{16cm}{\textcolor{blue}{\texttt{\Large \textbf{#1}}}}%
+	\hfill \textbf{#2}
+
+	\tab \begin{minipage}{16cm}\AtNextCitekey{\clearfield{title}}\fullcite{#3}\end{minipage}
+
+}
+
+% Compact block of content aligned with the entries
+%   [1] Content
+\newcommand{\cvCompact}[1]{
+	\smallskip
+	\tab \begin{minipage}{17.5cm}#1\end{minipage}
 
 }
 
